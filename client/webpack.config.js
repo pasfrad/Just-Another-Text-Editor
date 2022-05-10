@@ -17,6 +17,7 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+
     plugins: [
 
       new HtmlWebpackPlugin({
@@ -45,6 +46,11 @@ module.exports = () => {
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
+          {
+            src: path.resolve('favicon.ico'),
+            sizes: [16],
+            destination: path.join('assets', 'icons'),
+          },
         ],
       }),
     ],
@@ -61,7 +67,7 @@ module.exports = () => {
         // },
         {
           test: /\.m?js$/,
-          exclude: /(node_modules)/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
