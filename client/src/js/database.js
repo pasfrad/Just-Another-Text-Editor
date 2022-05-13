@@ -18,7 +18,7 @@ export const putDb = async (content) => {
   const tx = contactDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
   //await?
-  const request = store.put({ value: content });
+  const request = store.put({ contentName: content });
   const result = await request;
   console.log('Data saved to database', result);
 };
@@ -31,7 +31,7 @@ export const getDb = async () => {
   const request = store.getAll();
   const result = await request;
   console.log('result.value', result);
-  return result;
+  return result[result.length-1].contentName;
 };
 
 initdb();
